@@ -2,11 +2,20 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="speech_rec.js"></script>
 </head>
 <body>
 	<p>Accessibility assignment 8</p>
 	<button id="start_button" onclick="startButton(event)" style="display: inline-block;">
 	<img id="start_img" src="mic.gif" alt="Start"></button>
+
+	<div id="results">
+  	<span id="final_span" class="final"></span>
+  	<span id="interim_span" class="interim"></span>
+  	<p></p>
+  </div>
+
+
 	<form action="/action_page.php">
   	First name: <input type="text" name="fname"><br>
   	Last name: <input type="text" name="lname"><br>
