@@ -423,10 +423,12 @@ function getText() {
   /*var potential_command = document.getElementById("final_span").text;
   console.log(potential_command)*/
 
-  var potential_command = document.getElementById("final_span");
-  console.log(potential_command)
+  /*var potential_command = document.getElementById("final_span");
+  console.log(potential_command)*/
 
   console.log(speech)
+
+  var potential_command = speech;
 
   var re = /^(click|scroll|enter)\s(.*)/i;
   var result = re.exec(potential_command);
