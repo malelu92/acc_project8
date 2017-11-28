@@ -79,6 +79,10 @@
     background-color:transparent;
     padding: 0;
   }
+  .mic-img {
+    height: 30px;
+    width: 30px;
+  }
 </style>
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
@@ -103,13 +107,22 @@
 </div>
 <div class="right">
   <button id="start_button" onclick="startButton(event)">
-    <img id="start_img" src="mic.gif" alt="Start"></button>
+    <img class="mic-img" id="start_img" src="mic.gif" alt="Start"></button>
 </div>
 <div id="results">
   <span id="final_span" class="final"></span>
   <span id="interim_span" class="interim"></span>
   <p>
 </div>
+  text:<br>
+
+
+  <input id="text_box" type="text" name="text" value="">
+  <br>
+  <button onclick="getText()">Try it</button>
+  <p id="demo"></p>
+
+  
 <div class="center">
   <div class="sidebyside" style="text-align:right">
     <button id="copy_button" class="button" onclick="copyButton()">
@@ -388,4 +401,12 @@ function showButtons(style) {
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
+
+
+function getText() {
+    var x = document.getElementById("text_box").value;
+    document.getElementById("demo").innerHTML = x;
+}
+
+
 </script>
