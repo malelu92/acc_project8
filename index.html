@@ -427,7 +427,6 @@ function getText() {
         console.log("handling click")
         clickLink(arg);
         //console.log($("*:contains('" + arg + "')"));
-
         break;
       case "scroll":
         if(arg == "down") {
@@ -456,16 +455,20 @@ function getText() {
 
 function clickLink(text) {
   var stringpieces = text.split(/\s/);
+  console.log(stringpieces)
 
   $("a,input,button").each(function() {
     if($(this)[0].tagName == "INPUT") {
       /*console.log($(this).attr("type"))
       console.log($(this).attr("value"))*/
-      if(text == $(this).attr("value")) {
-        if(text == "Fluminense") {
-          goFluminense();
+
+      for(var i=0; i<stringpieces.length;i++) {
+        if(stringpieces[i] == $(this).attr("value") && $(this).attr("type") == "button") {
+          if(stringpieces[i] == "Fluminense") {
+            goFluminense();
+          }
         }
-      } 
+      }
     }
     else if($(this)[0].tagName == "A") {
       /*console.log($(this).text())
