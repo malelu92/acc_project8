@@ -143,6 +143,7 @@
   <input id="text_box" type="text" name="text" value="">
   <br>
   <button onclick="getText()">Try it</button>
+  <input id="text_input" type="text" name="text" value="">
   <p id="demo"></p>
   <input type="button" value="cat"><br>
   <a href="google.com">Google</a><br>
@@ -437,7 +438,6 @@ function getText() {
         })
         break;
       case "scroll":
-        // what do we do on scroll?
         if(arg == "down") {
           scrollDown();
         }
@@ -447,13 +447,18 @@ function getText() {
         console.log("handling scroll`")
         break;
       case "enter":
-        // what do we do on enter?
         console.log("handling enter")
+        console.log(arg)
+        enterText(arg);
         break;
       default:
         console.log("sorry, that is not a recognized command")
     }
   }
+}
+
+function enterText(text) {
+  $('#text_input').val(text);
 }
 
 function scrollDown() {
