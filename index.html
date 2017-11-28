@@ -411,7 +411,6 @@ function showButtons(style) {
 
 function getText() {
   var potential_command = document.getElementById("text_box").value;
-  document.getElementById("demo").innerHTML = potential_command;
 
   var re = /^(click|scroll|enter)\s(.*)/i;
   var result = re.exec(potential_command);
@@ -454,6 +453,11 @@ function getText() {
       default:
         console.log("sorry, that is not a recognized command")
     }
+  }
+  else {
+    error_message = "sorry, that is not a recognized command"
+    document.getElementById("demo").innerHTML = error_message;
+    console.log("sorry, that is not a recognized command")
   }
 }
 
