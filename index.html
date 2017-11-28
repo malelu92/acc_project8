@@ -454,6 +454,7 @@ function getText() {
 
 
 function clickLink(text) {
+  var valid_command = false;
   var stringpieces = text.split(/\s/);
   console.log(stringpieces)
 
@@ -466,14 +467,18 @@ function clickLink(text) {
           if(stringpieces[i] == "Fluminense") {
             goFluminense();
           }
+          valid_command = true;
         }
       }
     }
     else if($(this)[0].tagName == "A") {
       /*console.log($(this).text())
       console.log($(this).attr("href"))*/
-      if(text == $(this).text()) {
-        window.location.href = $(this).attr("href");
+      for(var i=0; i<stringpieces.length;i++) {
+        if(stringpieces[i] == $(this).text()) {
+          window.location.href = $(this).attr("href");
+          valid_command = true;
+        }
       }
     }
     else{ //button
@@ -482,10 +487,16 @@ function clickLink(text) {
           if(stringpieces[i] == "NYTimes") {
             goNYTimes();
           }
+          valid_command = true;
         }
       }
     }
   })
+
+  if(valid_command == false) {
+    error_message = "sorry, that is not a recognized command";
+    document.getElementById("demo").innerHTML = error_message;
+  }
 }
 
 function enterText(text) {
