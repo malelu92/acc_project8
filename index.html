@@ -412,7 +412,7 @@ function showButtons(style) {
 
 function getText() {
   /*var potential_command = document.getElementById("text_box").value;*/
-  var potential_command = document.getElementById("final_span").value;
+  var potential_command = document.getElementById("final_span").text();
   console.log(potential_command)
 
   var re = /^(click|scroll|enter)\s(.*)/i;
