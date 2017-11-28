@@ -145,7 +145,7 @@
   <button onclick="getText()">Try it</button>
   <input id="text_input" type="text" name="text" value="">
   <p id="demo"></p>
-  <input type="button" value="cat"><br>
+  <input type="button" value="Fluminense" onclick="goFluminense()"><br>
   <button onclick="goNYTimes()">NYTimes</button><br>
   <a href="http://www.google.com">Google</a><br>
   <a href="http://www.cmu.edu">CMU</a><br>
@@ -459,11 +459,17 @@ function clickLink(text) {
 
   $("a,input,button").each(function() {
     if($(this)[0].tagName == "INPUT") {
-      // look for the text in INPUT fields
+      /*console.log($(this).attr("type"))
+      console.log($(this).attr("value"))*/
+      if(text == $(this).attr("value")) {
+        if(text == "Fluminense") {
+          goFluminense();
+        }
+      } 
     }
     else if($(this)[0].tagName == "A") {
-      console.log($(this).text())
-      console.log($(this).attr("href"))
+      /*console.log($(this).text())
+      console.log($(this).attr("href"))*/
       if(text == $(this).text()) {
         window.location.href = $(this).attr("href");
       }
@@ -480,6 +486,10 @@ function clickLink(text) {
 
 function enterText(text) {
   $('#text_input').val(text);
+}
+
+function goFluminense() {
+  window.location.href = "http://www.fluminense.com.br/site/";
 }
 
 function goNYTimes() {
