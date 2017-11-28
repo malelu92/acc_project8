@@ -461,7 +461,6 @@ function clickLink(text) {
     if($(this)[0].tagName == "INPUT") {
       /*console.log($(this).attr("type"))
       console.log($(this).attr("value"))*/
-
       for(var i=0; i<stringpieces.length;i++) {
         if(stringpieces[i] == $(this).attr("value") && $(this).attr("type") == "button") {
           if(stringpieces[i] == "Fluminense") {
@@ -477,10 +476,12 @@ function clickLink(text) {
         window.location.href = $(this).attr("href");
       }
     }
-    else{
-      if(text == $(this).text()) {
-        if(text == "NYTimes") {
-          goNYTimes();
+    else{ //button
+      for(var i=0; i<stringpieces.length;i++) {
+        if(stringpieces[i] == $(this).text()) {
+          if(stringpieces[i] == "NYTimes") {
+            goNYTimes();
+          }
         }
       }
     }
