@@ -146,6 +146,7 @@
   <input id="text_input" type="text" name="text" value="">
   <p id="demo"></p>
   <input type="button" value="cat"><br>
+  <button onclick="goNYTimes()">NYTimes</button><br>
   <a href="http://www.google.com">Google</a><br>
   <a href="http://www.cmu.edu">CMU</a><br>
   <img src="plant.jpg">
@@ -467,11 +468,22 @@ function clickLink(text) {
         window.location.href = $(this).attr("href");
       }
     }
+    else{
+      if(text == $(this).text()) {
+        if(text == "NYTimes") {
+          goNYTimes();
+        }
+      }
+    }
   })
 }
 
 function enterText(text) {
   $('#text_input').val(text);
+}
+
+function goNYTimes() {
+  window.location.href = "https://www.nytimes.com/";
 }
 
 function scrollDown() {
