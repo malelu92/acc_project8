@@ -114,15 +114,6 @@
   <span id="interim_span" class="interim"></span>
   <p>
 </div>
-  text:<br>
-
-
-  <input id="text_box" type="text" name="text" value="">
-  <br>
-  <button onclick="getText()">Try it</button>
-  <p id="demo"></p>
-
-  
 <div class="center">
   <div class="sidebyside" style="text-align:right">
     <button id="copy_button" class="button" onclick="copyButton()">
@@ -146,7 +137,21 @@
     <select id="select_dialect"></select>
   </div>
 </div>
+
+
+  text:<br>
+  <input id="text_box" type="text" name="text" value="">
+  <br>
+  <button onclick="getText()">Try it</button>
+  <p id="demo"></p>
+  <input type="button" value="cat"><br>
+  <a href="google.com">Google</a><br>
+  <a href="cmu.edu">CMU</a><br>
+  <img src="plant.jpg">
+
+<script src="jquery.min.js"></script>
 <script>
+
 var langs =
 [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
@@ -404,8 +409,65 @@ function showButtons(style) {
 
 
 function getText() {
-    var x = document.getElementById("text_box").value;
-    document.getElementById("demo").innerHTML = x;
+  var potential_command = document.getElementById("text_box").value;
+  document.getElementById("demo").innerHTML = potential_command;
+
+  var re = /^(click|scroll|enter)\s(.*)/i;
+  var result = re.exec(potential_command);
+
+  if(result) {
+    var verb = result[1];
+    var arg = result[2]
+
+    console.log("verb: " + verb + ", args: " + arg)
+
+    switch(verb) {
+      case "click":
+        // what do we do if click?
+        console.log("handling click")
+
+        //console.log($("*:contains('" + arg + "')"));
+
+        var stringpieces = arg.split(/\s/);
+
+        $("a,input,button").each(function() {
+          if($(this)[0].tagName == "INPUT") {
+            // look for the text in INPUT fields
+          }
+        })
+        break;
+      case "scroll":
+        // what do we do on scroll?
+        if(arg == "down") {
+          scrollDown();
+        }
+        else if (arg=="up"){
+          scrollUp();
+        }
+        console.log("handling scroll`")
+        break;
+      case "enter":
+        // what do we do on enter?
+        console.log("handling enter")
+        break;
+      default:
+        console.log("sorry, that is not a recognized command")
+    }
+  }
+}
+
+function scrollDown() {
+  var scroll = 400;
+  $('html, body').animate({
+    scrollTop: $(document).scrollTop()+scroll
+  }, 1000);
+}
+
+function scrollUp() {
+  var scroll = 400;
+  $('html, body').animate({
+    scrollTop: $(document).scrollTop()-scroll
+  }, 1000);
 }
 
 
