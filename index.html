@@ -154,6 +154,8 @@
 <script src="jquery.min.js"></script>
 <script>
 
+var speech = null;
+
 var langs =
 [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
@@ -311,6 +313,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
+    speech = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
@@ -420,6 +423,8 @@ function getText() {
 
   var potential_command = document.getElementById("final_span").text;
   console.log(potential_command)
+
+  console.log(speech)
 
   var re = /^(click|scroll|enter)\s(.*)/i;
   var result = re.exec(potential_command);
