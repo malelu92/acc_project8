@@ -146,8 +146,8 @@
   <input id="text_input" type="text" name="text" value="">
   <p id="demo"></p>
   <input type="button" value="cat"><br>
-  <a href="google.com">Google</a><br>
-  <a href="cmu.edu">CMU</a><br>
+  <a href="http://www.google.com">Google</a><br>
+  <a href="http://www.cmu.edu">CMU</a><br>
   <img src="plant.jpg">
 
 <script src="jquery.min.js"></script>
@@ -423,18 +423,10 @@ function getText() {
 
     switch(verb) {
       case "click":
-        // what do we do if click?
         console.log("handling click")
-
+        clickLink(arg);
         //console.log($("*:contains('" + arg + "')"));
 
-        var stringpieces = arg.split(/\s/);
-
-        $("a,input,button").each(function() {
-          if($(this)[0].tagName == "INPUT") {
-            // look for the text in INPUT fields
-          }
-        })
         break;
       case "scroll":
         if(arg == "down") {
@@ -447,18 +439,35 @@ function getText() {
         break;
       case "enter":
         console.log("handling enter")
-        console.log(arg)
         enterText(arg);
         break;
       default:
-        console.log("sorry, that is not a recognized command")
+        error_message = "sorry, that is not a recognized command";
+        document.getElementById("demo").innerHTML = error_message;
     }
   }
   else {
-    error_message = "sorry, that is not a recognized command"
+    error_message = "sorry, that is not a recognized command";
     document.getElementById("demo").innerHTML = error_message;
-    console.log("sorry, that is not a recognized command")
   }
+}
+
+
+function clickLink(text) {
+  var stringpieces = text.split(/\s/);
+
+  $("a,input,button").each(function() {
+    if($(this)[0].tagName == "INPUT") {
+      // look for the text in INPUT fields
+    }
+    else if($(this)[0].tagName == "A") {
+      console.log($(this).text())
+      console.log($(this).attr("href"))
+      if(text == $(this).text()) {
+        window.location.href = $(this).attr("href");
+      }
+    }
+  })
 }
 
 function enterText(text) {
@@ -478,6 +487,5 @@ function scrollUp() {
     scrollTop: $(document).scrollTop()-scroll
   }, 1000);
 }
-
 
 </script>
