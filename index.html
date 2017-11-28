@@ -434,7 +434,7 @@ function getText() {
   var result = re.exec(potential_command);
 
   if(result) {
-    var verb = result[1];
+    var verb = result[1].toLowerCase();
     var arg = result[2]
 
     console.log("verb: " + verb + ", args: " + arg)
