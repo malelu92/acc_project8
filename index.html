@@ -145,8 +145,8 @@
   <button onclick="getText()">Try it</button>
   <input id="text_input" type="text" name="text" value="">
   <p id="demo"></p>
-  <input type="button" value="Fluminense" onclick="goFluminense()"><br>
-  <button onclick="goNYTimes()">NYTimes</button><br>
+  <input type="button" value="soccer" onclick="goFluminense()"><br>
+  <button onclick="goTennis()">tennis</button><br>
   <a href="http://www.google.com">Google</a><br>
   <a href="http://www.cmu.edu">CMU</a><br>
   <img src="plant.jpg">
@@ -464,7 +464,7 @@ function clickLink(text) {
       console.log($(this).attr("value"))*/
       for(var i=0; i<stringpieces.length;i++) {
         if(stringpieces[i] == $(this).attr("value") && $(this).attr("type") == "button") {
-          if(stringpieces[i] == "Fluminense") {
+          if(stringpieces[i] == "soccer") {
             goFluminense();
           }
           valid_command = true;
@@ -484,7 +484,7 @@ function clickLink(text) {
     else{ //button
       for(var i=0; i<stringpieces.length;i++) {
         if(stringpieces[i] == $(this).text()) {
-          if(stringpieces[i] == "NYTimes") {
+          if(stringpieces[i] == "tennis") {
             goNYTimes();
           }
           valid_command = true;
@@ -492,7 +492,6 @@ function clickLink(text) {
       }
     }
   })
-
   if(valid_command == false) {
     error_message = "sorry, that is not a recognized command";
     document.getElementById("demo").innerHTML = error_message;
@@ -507,8 +506,8 @@ function goFluminense() {
   window.location.href = "http://www.fluminense.com.br/site/";
 }
 
-function goNYTimes() {
-  window.location.href = "https://www.nytimes.com/";
+function goTennis() {
+  window.location.href = "http://www.tennis.com/";
 }
 
 function scrollDown() {
