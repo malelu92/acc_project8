@@ -444,9 +444,7 @@ function getText(speech) {
 
     switch(verb) {
       case "click":
-        console.log("handling click")
         clickLink(arg);
-        //console.log($("*:contains('" + arg + "')"));
         break;
       case "scroll":
         if(arg == "down") {
@@ -455,19 +453,19 @@ function getText(speech) {
         else if (arg=="up"){
           scrollUp();
         }
-        console.log("handling scroll`")
         break;
       case "enter":
-        console.log("handling enter")
         enterText(arg);
         break;
       default:
         error_message = "sorry, that is not a recognized command";
+        console.log("default error")
         document.getElementById("demo").innerHTML = error_message;
     }
   }
   else {
     error_message = "sorry, that is not a recognized command";
+    console.log("else error")
     document.getElementById("demo").innerHTML = error_message;
   }
   speech=null;
@@ -477,12 +475,9 @@ function getText(speech) {
 function clickLink(text) {
   var valid_command = false;
   var stringpieces = text.split(/\s/);
-  console.log(stringpieces)
 
   $("a,input,button").each(function() {
     if($(this)[0].tagName == "INPUT") {
-      /*console.log($(this).attr("type"))
-      console.log($(this).attr("value"))*/
       for(var i=0; i<stringpieces.length;i++) {
         if(stringpieces[i] == $(this).attr("value") && $(this).attr("type") == "button") {
           if(stringpieces[i] == "soccer") {
@@ -493,8 +488,6 @@ function clickLink(text) {
       }
     }
     else if($(this)[0].tagName == "A") {
-      /*console.log($(this).text())
-      console.log($(this).attr("href"))*/
       for(var i=0; i<stringpieces.length;i++) {
         if(stringpieces[i] == $(this).text()) {
           window.location.href = $(this).attr("href");
@@ -515,6 +508,7 @@ function clickLink(text) {
   })
   if(valid_command == false) {
     error_message = "sorry, that is not a recognized command";
+    console.log("false error")
     document.getElementById("demo").innerHTML = error_message;
   }
 }
