@@ -150,8 +150,6 @@ $(document).ready(function() {
   $('#text_input2').click(function() {
     clicked="#text_input2";
   });
-
-  console.log("inside ready: " + clicked)
 });
 
 var langs =
@@ -405,8 +403,8 @@ function getText(speech) {
         break;
       case "enter":
         enterText(arg, clicked);
-        if(clicked == "") {
-          console.log(clicked)
+        console.log(clicked)
+        if(clicked == undefined) {
           error_message = "please click on a text box";
           document.getElementById("demo").innerHTML = error_message;
         }
