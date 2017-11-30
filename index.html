@@ -320,12 +320,11 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
-    console.log("final transcript2 " + final_span.innerHTML)
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
-    getText(speech.trim())
+    getText(final_span.innerHTML.trim())
   };
 }
 
