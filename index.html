@@ -141,7 +141,7 @@
 <script src="jquery.min.js"></script>
 <script>
 
-  var clicked;
+var clicked;
 $(document).ready(function() {
 
   $('#text_input').click(function() {
@@ -150,7 +150,7 @@ $(document).ready(function() {
   $('#text_input2').click(function() {
     clicked="#text_input2";
   });
-});
+//});
 
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -317,6 +317,8 @@ if (!('webkitSpeechRecognition' in window)) {
     getText(final_span.innerHTML.trim(), clicked)
   };
 }
+
+});
 
 function upgrade() {
   start_button.style.visibility = 'hidden';
