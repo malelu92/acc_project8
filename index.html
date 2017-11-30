@@ -235,7 +235,6 @@ function updateCountry() {
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
 }
 
-//var create_email = false;
 var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
@@ -292,14 +291,9 @@ if (!('webkitSpeechRecognition' in window)) {
       range.selectNode(document.getElementById('final_span'));
       window.getSelection().addRange(range);
     }
-    /*if (create_email) {
-      create_email = false;
-      createEmail();
-    }*/
   };
 
   recognition.onresult = function(event) {
-    console.log("**** " + clicked)
     var interim_transcript = '';
     var speech = '';
     final_transcript = '';
@@ -334,16 +328,6 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
-/*function createEmail() {
-  var n = final_transcript.indexOf('\n');
-  if (n < 0 || n >= 80) {
-    n = 40 + final_transcript.substring(40).indexOf(' ');
-  }
-  var subject = encodeURI(final_transcript.substring(0, n));
-  var body = encodeURI(final_transcript.substring(n + 1));
-  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-}*/
-
 function startButton(event) {
   if (recognizing) {
     recognition.stop();
@@ -375,8 +359,6 @@ function showInfo(s) {
 
 function getText(speech) {
 
-  console.log(speech)
-
   var potential_command = speech;
 
   var re = /^(click|scroll|enter)\s(.*)/i;
@@ -403,7 +385,6 @@ function getText(speech) {
         break;
       case "enter":
         enterText(arg, clicked);
-        console.log(clicked)
         if(clicked == undefined) {
           error_message = "please click on a text box";
           document.getElementById("demo").innerHTML = error_message;
@@ -458,13 +439,11 @@ function clickLink(text) {
   })
   if(valid_command == false) {
     error_message = "sorry, that is not a recognized command";
-    console.log("false error")
     document.getElementById("demo").innerHTML = error_message;
   }
 }
 
 function enterText(text) {
-  console.log("in enter text " + clicked)
   $(clicked).val(text);
 }
 
