@@ -142,11 +142,15 @@
 <script>
 
 $(document).ready(function() {
+
+  var clicked;
   $('#text_input').click(function() {
-    alert(term);
+    alert("term");
+    clicked="#text_input";
   });
   $('#text_input2').click(function() {
-    alert(term);
+    alert("term2");
+    clicked="#text_input2";
   });
 });
 
@@ -311,7 +315,7 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-    getText(final_span.innerHTML.trim())
+    getText(final_span.innerHTML.trim(), clicked)
   };
 }
 
@@ -372,7 +376,7 @@ function showInfo(s) {
 
 
 
-function getText(speech) {
+function getText(speech, clicked) {
 
   console.log(speech)
 
@@ -401,7 +405,7 @@ function getText(speech) {
         }
         break;
       case "enter":
-        enterText(arg);
+        enterText(arg, clicked);
         break;
       default:
         error_message = "sorry, that is not a recognized command";
@@ -459,8 +463,9 @@ function clickLink(text) {
   }
 }
 
-function enterText(text) {
-  $('#text_input').val(text);
+function enterText(text, clicked) {
+  console.log(clicked)
+  $(clicked).val(text);
 }
 
 function goFluminense() {
