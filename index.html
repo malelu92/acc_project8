@@ -309,6 +309,7 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onresult = function(event) {
     var interim_transcript = '';
     var speech = '';
+    final_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
@@ -318,16 +319,13 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     final_transcript = capitalize(final_transcript);
-    console.log("final transcript1 " + final_transcript)
     final_span.innerHTML = linebreak(final_transcript);
     console.log("final transcript2 " + final_span.innerHTML)
-    console.log("speech " + speech)
-    /*speech = linebreak(final_transcript);*/
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
-    getText(speech)
+    getText(speech.trim())
   };
 }
 
