@@ -116,12 +116,18 @@
   <span id="interim_span" class="interim"></span>
   <p>
 </div>
+<div class="center">
+  <div id="div_language">
+    <select id="select_language" onchange="updateCountry()"></select>
+    &nbsp;&nbsp;
+    <select id="select_dialect"></select>
+  </div>
+</div>
+
 
   text:<br>
-  <input id="text_box" type="text" name="text" value="">
-  <br>
-  <button onclick="getText()">Try it</button>
   <input id="text_input" type="text" name="text" value="">
+  <input id="text_input2" type="text" name="text" value="">
   <p id="demo"></p>
   <input type="button" value="soccer" onclick="goFluminense()"><br>
   <button onclick="goTennis()">tennis</button><br>
