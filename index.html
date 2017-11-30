@@ -150,7 +150,9 @@ $(document).ready(function() {
   $('#text_input2').click(function() {
     clicked="#text_input2";
   });
-//});
+
+  console.log("inside ready: " + clicked)
+});
 
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -298,7 +300,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
-  recognition.onresult = function(event, clicked) {
+  recognition.onresult = function(event) {
     console.log("**** " + clicked)
     var interim_transcript = '';
     var speech = '';
@@ -314,11 +316,9 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-    getText(final_span.innerHTML.trim(), clicked)
+    getText(final_span.innerHTML.trim())
   };
 }
-
-});
 
 function upgrade() {
   start_button.style.visibility = 'hidden';
@@ -375,9 +375,7 @@ function showInfo(s) {
   }
 }
 
-
-
-function getText(speech, clicked) {
+function getText(speech) {
 
   console.log(speech)
 
@@ -464,8 +462,8 @@ function clickLink(text) {
   }
 }
 
-function enterText(text, clicked) {
-  console.log(clicked)
+function enterText(text) {
+  console.log("in enter text " + clicked)
   $(clicked).val(text);
 }
 
