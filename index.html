@@ -300,7 +300,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
-  recognition.onresult = function(event) {
+  recognition.onresult = function(event, clicked) {
     var interim_transcript = '';
     var speech = '';
     final_transcript = '';
