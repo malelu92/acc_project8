@@ -463,7 +463,7 @@ function getText(speech) {
         document.getElementById("demo").innerHTML = error_message;
     }
   }
-  else {
+  else if(speech != ""){
     error_message = "sorry, that is not a recognized command";
     console.log("else error")
     document.getElementById("demo").innerHTML = error_message;
