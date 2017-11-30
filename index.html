@@ -129,7 +129,7 @@
   text:<br>
   <input id="text_input" type="text" name="text" value="">
   <br>
-  <input id="text_input" type="text" name="text" value="">
+  <input id="text_input2" type="text" name="text" value="">
   <br>
   <p id="demo"></p>
   <input type="button" value="soccer" onclick="goFluminense()"><br>
@@ -141,7 +141,14 @@
 <script src="jquery.min.js"></script>
 <script>
 
-/*var speech = null;*/
+$(document).ready(function() {
+  $('#text_input').click(function() {
+    alert(term);
+  });
+  $('#text_input2').click(function() {
+    alert(term);
+  });
+});
 
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -304,9 +311,6 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     interim_span.innerHTML = linebreak(interim_transcript);
-    /*if (final_transcript || interim_transcript) {
-      showButtons('inline-block');
-    }*/
     getText(final_span.innerHTML.trim())
   };
 }
@@ -337,29 +341,6 @@ function createEmail() {
   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
-/*function copyButton() {
-  if (recognizing) {
-    recognizing = false;
-    recognition.stop();
-  }
-  copy_button.style.display = 'none';
-  copy_info.style.display = 'inline-block';
-  showInfo('');
-}*/
-
-/*function emailButton() {
-  if (recognizing) {
-    create_email = true;
-    recognizing = false;
-    recognition.stop();
-  } else {
-    createEmail();
-  }
-  email_button.style.display = 'none';
-  email_info.style.display = 'inline-block';
-  showInfo('');
-}*/
-
 function startButton(event) {
   if (recognizing) {
     recognition.stop();
@@ -373,7 +354,6 @@ function startButton(event) {
   interim_span.innerHTML = '';
   start_img.src = 'mic-slash.gif';
   showInfo('info_allow');
-  //showButtons('none');
   start_timestamp = event.timeStamp;
 }
 
@@ -390,26 +370,9 @@ function showInfo(s) {
   }
 }
 
-/*var current_style;
-function showButtons(style) {
-  if (style == current_style) {
-    return;
-  }
-  current_style = style;
-  //copy_button.style.display = style;
-  //email_button.style.display = style;
-  //copy_info.style.display = 'none';
-  email_info.style.display = 'none';
-}*/
 
 
 function getText(speech) {
-  /*var potential_command = document.getElementById("text_box").value;*/
-  /*var potential_command = document.getElementById("final_span").text;
-  console.log(potential_command)*/
-
-  /*var potential_command = document.getElementById("final_span");
-  console.log(potential_command)*/
 
   console.log(speech)
 
