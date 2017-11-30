@@ -141,15 +141,13 @@
 <script src="jquery.min.js"></script>
 <script>
 
+  var clicked;
 $(document).ready(function() {
 
-  var clicked;
   $('#text_input').click(function() {
-    alert("term");
     clicked="#text_input";
   });
   $('#text_input2').click(function() {
-    alert("term2");
     clicked="#text_input2";
   });
 });
@@ -237,7 +235,7 @@ function updateCountry() {
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
 }
 
-var create_email = false;
+//var create_email = false;
 var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
@@ -301,6 +299,7 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 
   recognition.onresult = function(event, clicked) {
+    console.log("**** " + clicked)
     var interim_transcript = '';
     var speech = '';
     final_transcript = '';
