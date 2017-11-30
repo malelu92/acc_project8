@@ -33,6 +33,10 @@
     padding: 10px;
     text-align: center;
   }
+  #demo {
+    color: red;
+    font-size: 300px;
+  }
   .final {
     color: black;
     padding-right: 3px; 
@@ -311,8 +315,10 @@ if (!('webkitSpeechRecognition' in window)) {
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
+        console.log("is final: " + event.results[i][0].transcript)
       } else {
         interim_transcript += event.results[i][0].transcript;
+        console.log("is not final: " + event.results[i][0].transcript)
       }
     }
     final_transcript = capitalize(final_transcript);
@@ -438,6 +444,7 @@ function getText() {
     var arg = result[2]
 
     console.log("verb: " + verb + ", args: " + arg)
+    document.getElementById("demo").innerHTML = "";
 
     switch(verb) {
       case "click":
