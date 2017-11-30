@@ -88,7 +88,7 @@
     width: 30px;
   }
 </style>
-<h1 class="center" id="headline">Web Browsing by Voice</h1>
+<h1 class="center" id="headline">Web Browsing By Voice</h1>
 <div id="info">
   <p id="info_start">Click on the microphone icon and begin speaking.</p>
   <p id="info_speak_now">Speak now.</p>
@@ -117,6 +117,7 @@
   <p>
 </div>
 <div class="center">
+  <p>
   <div id="div_language">
     <select id="select_language" onchange="updateCountry()"></select>
     &nbsp;&nbsp;
@@ -127,7 +128,9 @@
 
   text:<br>
   <input id="text_input" type="text" name="text" value="">
-  <input id="text_input2" type="text" name="text" value="">
+  <br>
+  <input id="text_input" type="text" name="text" value="">
+  <br>
   <p id="demo"></p>
   <input type="button" value="soccer" onclick="goFluminense()"><br>
   <button onclick="goTennis()">tennis</button><br>
@@ -334,7 +337,7 @@ function createEmail() {
   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
-function copyButton() {
+/*function copyButton() {
   if (recognizing) {
     recognizing = false;
     recognition.stop();
@@ -342,9 +345,9 @@ function copyButton() {
   copy_button.style.display = 'none';
   copy_info.style.display = 'inline-block';
   showInfo('');
-}
+}*/
 
-function emailButton() {
+/*function emailButton() {
   if (recognizing) {
     create_email = true;
     recognizing = false;
@@ -355,7 +358,7 @@ function emailButton() {
   email_button.style.display = 'none';
   email_info.style.display = 'inline-block';
   showInfo('');
-}
+}*/
 
 function startButton(event) {
   if (recognizing) {
@@ -387,17 +390,17 @@ function showInfo(s) {
   }
 }
 
-var current_style;
+/*var current_style;
 function showButtons(style) {
   if (style == current_style) {
     return;
   }
   current_style = style;
-  copy_button.style.display = style;
-  email_button.style.display = style;
-  copy_info.style.display = 'none';
+  //copy_button.style.display = style;
+  //email_button.style.display = style;
+  //copy_info.style.display = 'none';
   email_info.style.display = 'none';
-}
+}*/
 
 
 function getText(speech) {
