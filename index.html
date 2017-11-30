@@ -144,10 +144,8 @@
 
 
   text:<br>
-  <input id="text_box" type="text" name="text" value="">
-  <br>
-  <button onclick="getText()">Try it</button>
   <input id="text_input" type="text" name="text" value="">
+  <input id="text_input2" type="text" name="text" value="">
   <p id="demo"></p>
   <input type="button" value="soccer" onclick="goFluminense()"><br>
   <button onclick="goTennis()">tennis</button><br>
@@ -158,73 +156,8 @@
 <script src="jquery.min.js"></script>
 <script>
 
-/*var speech = null;*/
 
-var langs =
-[['Afrikaans',       ['af-ZA']],
- ['Bahasa Indonesia',['id-ID']],
- ['Bahasa Melayu',   ['ms-MY']],
- ['Català',          ['ca-ES']],
- ['Čeština',         ['cs-CZ']],
- ['Deutsch',         ['de-DE']],
- ['English',         ['en-AU', 'Australia'],
-                     ['en-CA', 'Canada'],
-                     ['en-IN', 'India'],
-                     ['en-NZ', 'New Zealand'],
-                     ['en-ZA', 'South Africa'],
-                     ['en-GB', 'United Kingdom'],
-                     ['en-US', 'United States']],
- ['Español',         ['es-AR', 'Argentina'],
-                     ['es-BO', 'Bolivia'],
-                     ['es-CL', 'Chile'],
-                     ['es-CO', 'Colombia'],
-                     ['es-CR', 'Costa Rica'],
-                     ['es-EC', 'Ecuador'],
-                     ['es-SV', 'El Salvador'],
-                     ['es-ES', 'España'],
-                     ['es-US', 'Estados Unidos'],
-                     ['es-GT', 'Guatemala'],
-                     ['es-HN', 'Honduras'],
-                     ['es-MX', 'México'],
-                     ['es-NI', 'Nicaragua'],
-                     ['es-PA', 'Panamá'],
-                     ['es-PY', 'Paraguay'],
-                     ['es-PE', 'Perú'],
-                     ['es-PR', 'Puerto Rico'],
-                     ['es-DO', 'República Dominicana'],
-                     ['es-UY', 'Uruguay'],
-                     ['es-VE', 'Venezuela']],
- ['Euskara',         ['eu-ES']],
- ['Français',        ['fr-FR']],
- ['Galego',          ['gl-ES']],
- ['Hrvatski',        ['hr_HR']],
- ['IsiZulu',         ['zu-ZA']],
- ['Íslenska',        ['is-IS']],
- ['Italiano',        ['it-IT', 'Italia'],
-                     ['it-CH', 'Svizzera']],
- ['Magyar',          ['hu-HU']],
- ['Nederlands',      ['nl-NL']],
- ['Norsk bokmål',    ['nb-NO']],
- ['Polski',          ['pl-PL']],
- ['Português',       ['pt-BR', 'Brasil'],
-                     ['pt-PT', 'Portugal']],
- ['Română',          ['ro-RO']],
- ['Slovenčina',      ['sk-SK']],
- ['Suomi',           ['fi-FI']],
- ['Svenska',         ['sv-SE']],
- ['Türkçe',          ['tr-TR']],
- ['български',       ['bg-BG']],
- ['Pусский',         ['ru-RU']],
- ['Српски',          ['sr-RS']],
- ['한국어',            ['ko-KR']],
- ['中文',             ['cmn-Hans-CN', '普通话 (中国大陆)'],
-                     ['cmn-Hans-HK', '普通话 (香港)'],
-                     ['cmn-Hant-TW', '中文 (台灣)'],
-                     ['yue-Hant-HK', '粵語 (香港)']],
- ['日本語',           ['ja-JP']],
- ['Lingua latīna',   ['la']]];
-
-for (var i = 0; i < langs.length; i++) {
+/*for (var i = 0; i < langs.length; i++) {
   select_language.options[i] = new Option(langs[i][0], i);
 }
 select_language.selectedIndex = 6;
@@ -241,9 +174,9 @@ function updateCountry() {
     select_dialect.options.add(new Option(list[i][1], list[i][0]));
   }
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
-}
+}*/
 
-var create_email = false;
+//var create_email = false;
 var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
@@ -300,10 +233,10 @@ if (!('webkitSpeechRecognition' in window)) {
       range.selectNode(document.getElementById('final_span'));
       window.getSelection().addRange(range);
     }
-    if (create_email) {
+    /*if (create_email) {
       create_email = false;
       createEmail();
-    }
+    }*/
   };
 
   recognition.onresult = function(event) {
@@ -344,7 +277,7 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
-function createEmail() {
+/*function createEmail() {
   var n = final_transcript.indexOf('\n');
   if (n < 0 || n >= 80) {
     n = 40 + final_transcript.substring(40).indexOf(' ');
@@ -352,7 +285,7 @@ function createEmail() {
   var subject = encodeURI(final_transcript.substring(0, n));
   var body = encodeURI(final_transcript.substring(n + 1));
   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-}
+}*/
 
 function copyButton() {
   if (recognizing) {
@@ -364,7 +297,7 @@ function copyButton() {
   showInfo('');
 }
 
-function emailButton() {
+/*function emailButton() {
   if (recognizing) {
     create_email = true;
     recognizing = false;
@@ -375,7 +308,7 @@ function emailButton() {
   email_button.style.display = 'none';
   email_info.style.display = 'inline-block';
   showInfo('');
-}
+}*/
 
 function startButton(event) {
   if (recognizing) {
@@ -414,19 +347,13 @@ function showButtons(style) {
   }
   current_style = style;
   copy_button.style.display = style;
-  email_button.style.display = style;
+  //email_button.style.display = style;
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
 
 
 function getText(speech) {
-  /*var potential_command = document.getElementById("text_box").value;*/
-  /*var potential_command = document.getElementById("final_span").text;
-  console.log(potential_command)*/
-
-  /*var potential_command = document.getElementById("final_span");
-  console.log(potential_command)*/
 
   console.log(speech)
 
