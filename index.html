@@ -406,6 +406,7 @@ function getText(speech) {
       case "enter":
         enterText(arg, clicked);
         if(clicked == "") {
+          console.log(clicked)
           error_message = "please click on a text box";
           document.getElementById("demo").innerHTML = error_message;
         }
