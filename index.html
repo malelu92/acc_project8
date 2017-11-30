@@ -158,11 +158,7 @@
 <script src="jquery.min.js"></script>
 <script>
 
-var speech = null;
-
-$(document).ready(function() {
-  console.log("lala")
-});
+/*var speech = null;*/
 
 var langs =
 [['Afrikaans',       ['af-ZA']],
@@ -315,20 +311,18 @@ if (!('webkitSpeechRecognition' in window)) {
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
-        console.log("is final: " + event.results[i][0].transcript)
       } else {
         interim_transcript += event.results[i][0].transcript;
-        console.log("is not final: " + event.results[i][0].transcript)
       }
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
-    speech = linebreak(final_transcript);
+    /*speech = linebreak(final_transcript);*/
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
-    getText()
+    getText(final_span.innerHTML)
   };
 }
 
@@ -424,7 +418,7 @@ function showButtons(style) {
 }
 
 
-function getText() {
+function getText(speech) {
   /*var potential_command = document.getElementById("text_box").value;*/
   /*var potential_command = document.getElementById("final_span").text;
   console.log(potential_command)*/
