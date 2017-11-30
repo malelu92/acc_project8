@@ -82,8 +82,7 @@
   }
 </style>
 <h1 class="center" id="headline">
-  <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-    Web Speech API</a> Demonstration</h1>
+  Web Browsing by Voice</h1>
 <div class="right">
   <button id="start_button" onclick="startButton(event)">
     <img class="mic-img" id="start_img" src="mic.gif" alt="Start"></button>
@@ -268,7 +267,7 @@ function startButton(event) {
     return;
   }
   final_transcript = '';
-  recognition.lang = select_dialect.value;
+  recognition.lang = 'en';//select_dialect.value;
   recognition.start();
   ignore_onend = false;
   final_span.innerHTML = '';
